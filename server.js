@@ -5,12 +5,14 @@ var irc = require('irc');
 var ircConfig = {
 	channels: ["#lolmvc"],
 	server: "irc.freenode.net",
-	botName: "lolB0t",
+	botName: "lolmvcB0t",
 	owner: "antoniomtz"
 };
 
 var bot = new irc.Client(ircConfig.server, ircConfig.botName, {
     channels: ircConfig.channels,
+	userName: 'lolmvcbot',
+    realName: 'lolmvc Framework',
     port: 8001,
     debug: true
 });
