@@ -9,8 +9,8 @@ var ircConfig = {
 	owner: "antoniomtz"
 };
 
-var bot = new irc.Client('chat.freenode.net', process.env.OPENSHIFT_APP_NAME || 'lolmvcb0t', {
-    channels: ['#testingantonio'],
+var bot = new irc.Client(ircConfig.server, ircConfig.botName, {
+    channels: ircConfig.channels,
     port: 8001,
     debug: true
 });
@@ -21,30 +21,10 @@ bot.addListener('message', function(from, to, message) {
     }
 });
 
-bot.addListener('message', function(from, to, message) {
-    if( message.indexOf('Know any good jokes?') > -1
-      || message.indexOf('good joke') > -1
-    ) {
-        bot.say(to, 'Knock knock!');
-    }
-});
-bot.addListener('message', function(from, to, message) {
-    if( message.indexOf('who is there?') > -1
-      || message.indexOf("who's there?") > -1
-      || message.indexOf("Who's there?") > -1
-      || message.indexOf("Who is there?") > -1
-      )
-    {
-        bot.say(to, 'Doris');
-    }
-});
-bot.addListener('message', function(from, to, message) {
-    if( message.indexOf('Doris who?') > -1
-      || message.indexOf("doris who?") > -1
-     )
-    {
-        bot.say(to, "Doris locked, that's why I'm knocking!");
-    }
+// Listen for joins
+bot.addListener("join", function(channel, who) {
+	// Welcome them in!
+	bot.say(channel, who + " welcome to lolMVC Channel!");
 });
 
 var express = require('express');
