@@ -3,7 +3,7 @@
 var irc = require('irc');
 
 var ircConfig = {
-	channels: ["#testingantonio"],
+	channels: ["#lolmvc"],
 	server: "irc.freenode.net",
 	botName: "lolB0t",
 	owner: "antoniomtz"
