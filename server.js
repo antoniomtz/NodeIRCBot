@@ -5,9 +5,10 @@ var irc = require('irc');
 var ircConfig = {
 	channels: ["#lolmvc"],
 	server: "irc.freenode.net",
-	botName: "lolmvcB0t",
-	owner: "antoniomtz"
+	botName: "lolmvcB0t",	
 };
+
+var owners = new Array();
 
 //Connection
 var bot = new irc.Client(ircConfig.server, ircConfig.botName, {
@@ -18,10 +19,18 @@ var bot = new irc.Client(ircConfig.server, ircConfig.botName, {
     debug: true
 });
 
+//Authenticate by PM
+bot.addListener('pm', function (from, message) {
+	if(message.indexOf('lolpass') > -1){
+		owners.push(from);
+		bot.say(from, "You are my owner now");
+	}
+});
+
 //Say hello to owner
 bot.addListener('message', function(from, to, message) {
-    if(  message.indexOf('!say hello')> -1 && from == ircConfig.owner)  {
-        bot.say(ircConfig.channels[0], 'Hello my owner Antonio!. How can I help you?');
+    if(  message.indexOf('!say hello')> -1 && owners.indexOf(from) > -1)  {
+        bot.say(config.channels[0], 'Hello my owner '+ from +', How can I help you?');
     }
 });
 
