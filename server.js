@@ -1,32 +1,40 @@
 #!/bin/env node
-//  IRC Bot
-var express = require('express');
-var fs      = require('fs');
-var irc = require("irc");
-var config = {
-	channels: ["#testingantonio"],
-	server: "irc.freenode.net",
-	botName: "lolB0t",
-	owner: "antoniomtz"
-};
-
-var bot = new irc.Client('irc.freenode.net', botName, {
-    channels: config.channels,
+// IRC bot
+var irc = require('irc');
+var bot = new irc.Client('chat.freenode.net', process.env.OPENSHIFT_APP_NAME || 'lolmvcb0t', {
+    channels: ['#testinantonio'],
     port: 8001,
     debug: true
 });
 
-// Listen for joins
-bot.addListener("join", function(channel, who) {
-	// Welcome them in!
-	bot.say(channel, who + "...dude...welcome back!");
-});
-
 bot.addListener('message', function(from, to, message) {
-    if(  message.indexOf('!say hello')> -1 && from == config.owner)  {
-        bot.say(config.channels[0], 'Hello my owner Antonio!. How can I help you?');
+    if( message.indexOf('Know any good jokes?') > -1
+      || message.indexOf('good joke') > -1
+    ) {
+        bot.say(to, 'Knock knock!');
     }
 });
+bot.addListener('message', function(from, to, message) {
+    if( message.indexOf('who is there?') > -1
+      || message.indexOf("who's there?") > -1
+      || message.indexOf("Who's there?") > -1
+      || message.indexOf("Who is there?") > -1
+      )
+    {
+        bot.say(to, 'Doris');
+    }
+});
+bot.addListener('message', function(from, to, message) {
+    if( message.indexOf('Doris who?') > -1
+      || message.indexOf("doris who?") > -1
+     )
+    {
+        bot.say(to, "Doris locked, that's why I'm knocking!");
+    }
+});
+
+var express = require('express');
+var fs      = require('fs');
 
 /**
  *  Define the sample application.
