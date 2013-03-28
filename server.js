@@ -9,6 +9,7 @@ var ircConfig = {
 	owner: "antoniomtz"
 };
 
+//Connection
 var bot = new irc.Client(ircConfig.server, ircConfig.botName, {
     channels: ircConfig.channels,
 	userName: 'lolmvcbot',
@@ -17,6 +18,7 @@ var bot = new irc.Client(ircConfig.server, ircConfig.botName, {
     debug: true
 });
 
+//Say hello to owner
 bot.addListener('message', function(from, to, message) {
     if(  message.indexOf('!say hello')> -1 && from == ircConfig.owner)  {
         bot.say(ircConfig.channels[0], 'Hello my owner Antonio!. How can I help you?');
@@ -30,7 +32,6 @@ bot.addListener("join", function(channel, who) {
 	else
 		bot.say(channel, who + " welcome to lolMVC Channel!");
 });
-
 
 
 /*
