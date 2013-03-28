@@ -30,7 +30,7 @@ bot.addListener('pm', function (from, message) {
 //Say hello to owner
 bot.addListener('message', function(from, to, message) {
     if(  message.indexOf('!say hello')> -1 && owners.indexOf(from) > -1)  {
-        bot.say(config.channels[0], 'Hello my owner '+ from +', How can I help you?');
+        bot.say(ircConfig.channels[0], 'Hello my owner '+ from +', How can I help you?');
     }
 });
 
