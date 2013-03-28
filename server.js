@@ -11,7 +11,7 @@ var config = {
 };
 
 var bot = new irc.Client('irc.freenode.net', botName, {
-    channels: ['#botzoo', '#botwar'],
+    channels: config.channels,
     port: 8001,
     debug: true
 });
