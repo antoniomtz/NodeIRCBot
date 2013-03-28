@@ -1,8 +1,32 @@
 #!/bin/env node
-//  OpenShift sample Node application
+//  IRC Bot
 var express = require('express');
 var fs      = require('fs');
+var irc = require("irc");
+var config = {
+	channels: ["#testingantonio"],
+	server: "irc.freenode.net",
+	botName: "lolB0t",
+	owner: "antoniomtz"
+};
 
+var bot = new irc.Client('irc.freenode.net', botName, {
+    channels: ['#botzoo', '#botwar'],
+    port: 8001,
+    debug: true
+});
+
+// Listen for joins
+bot.addListener("join", function(channel, who) {
+	// Welcome them in!
+	bot.say(channel, who + "...dude...welcome back!");
+});
+
+bot.addListener('message', function(from, to, message) {
+    if(  message.indexOf('!say hello')> -1 && from == config.owner)  {
+        bot.say(config.channels[0], 'Hello my owner Antonio!. How can I help you?');
+    }
+});
 
 /**
  *  Define the sample application.
