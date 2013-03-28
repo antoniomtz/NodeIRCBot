@@ -25,9 +25,12 @@ bot.addListener('message', function(from, to, message) {
 
 // Welcome message
 bot.addListener("join", function(channel, who) {
-	
-	bot.say(channel, who + " welcome to lolMVC Channel!");
+	if(who == ircConfig.owner)
+		bot.say(channel, "Welcome to my master "+ who +" !");
+	else
+		bot.say(channel, who + " welcome to lolMVC Channel!");
 });
+
 
 
 /*
