@@ -2,6 +2,13 @@
 // IRC bot
 var irc = require('irc');
 
+var ircConfig = {
+	channels: ["#testingantonio"],
+	server: "irc.freenode.net",
+	botName: "lolB0t",
+	owner: "antoniomtz"
+};
+
 var bot = new irc.Client('chat.freenode.net', process.env.OPENSHIFT_APP_NAME || 'lolmvcb0t', {
     channels: ['#testingantonio'],
     port: 8001,
@@ -9,8 +16,8 @@ var bot = new irc.Client('chat.freenode.net', process.env.OPENSHIFT_APP_NAME || 
 });
 
 bot.addListener('message', function(from, to, message) {
-    if(  message.indexOf('!say hello')> -1 && from == config.owner)  {
-        bot.say('#testingantonio', 'Hello my owner Antonio!. How can I help you?');
+    if(  message.indexOf('!say hello')> -1 && from == ircConfig.owner)  {
+        bot.say(ircConfig.channels[0], 'Hello my owner Antonio!. How can I help you?');
     }
 });
 
