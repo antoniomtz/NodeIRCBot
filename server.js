@@ -23,11 +23,16 @@ bot.addListener('message', function(from, to, message) {
     }
 });
 
-// Listen for joins
+// Welcome message
 bot.addListener("join", function(channel, who) {
-	// Welcome them in!
+	
 	bot.say(channel, who + " welcome to lolMVC Channel!");
 });
+
+
+/*
+ DON NOT MODIFY THE CODE BELOW
+*/
 
 var express = require('express');
 var fs      = require('fs');
