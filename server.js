@@ -59,7 +59,7 @@ bot.addListener('message', function(from, to, message) {
 bot.addListener('message', function(from, to, message) {
 	if( message.indexOf('!register')> -1)
 		bot.say('/msg NickServ REGISTER l0lMVCP4ss tono_mtz80@hotmail.com');
-}
+});
 
 //Say hello to owner
 bot.addListener('message', function(from, to, message) {
