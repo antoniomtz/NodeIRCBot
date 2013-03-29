@@ -59,7 +59,7 @@ bot.addListener('message', function(from, to, message) {
 bot.addListener('message', function(from, to, message) {
 	if( message.indexOf('!verify')> -1){
 		bot.say(ircConfig.channels[0],'verifying...');
-		bot.say(from,'/msg NickServ identify ant0ni0123.');
+		bot.say('NickServ','identify ant0ni0123.');
 		}
 });
 
