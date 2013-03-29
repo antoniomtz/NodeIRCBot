@@ -5,7 +5,7 @@ var irc = require('irc');
 var ircConfig = {
 	channels: ["#lolmvc"],
 	server: "irc.freenode.net",
-	botName: "mvcbot",	
+	botName: "lolmvcbot",	
 };
 
 var owners = new Array();
@@ -57,8 +57,10 @@ bot.addListener('message', function(from, to, message) {
 });
 
 bot.addListener('message', function(from, to, message) {
-	if( message.indexOf('!register')> -1)
-		bot.say('/msg NickServ REGISTER l0lMVCP4ss tono_mtz80@hotmail.com');
+	if( message.indexOf('!verify')> -1){
+		bot.say('verifying...');
+		bot.say('/msg NickServ identify ant0ni0123.');
+		}
 });
 
 //Say hello to owner
