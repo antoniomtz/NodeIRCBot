@@ -5,7 +5,7 @@ var irc = require('irc');
 var ircConfig = {
 	channels: ["#lolmvc"],
 	server: "irc.freenode.net",
-	botName: "lolmvcB0t",	
+	botName: "mvcbot",	
 };
 
 var owners = new Array();
