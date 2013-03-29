@@ -1,5 +1,5 @@
 #!/bin/env node
-// IRC bot
+/* IRC bot behavior */
 var irc = require('irc');
 
 var ircConfig = {
@@ -27,6 +27,40 @@ bot.addListener('pm', function (from, message) {
 	}
 });
 
+//Op and deop  e.g. !op antoniomtz
+bot.addListener('message', function(from, to, message) {
+    if(owners.indexOf(from) > -1){
+		var rePattern = new RegExp(/(?:!op|!deop) (.*?)$/);		
+		arrMatches = message.match(rePattern);
+		if(arrMatches!==null){
+		
+			if( message.indexOf('!op')> -1)  			
+				bot.send('MODE', ircConfig.channels[0], '+o', arrMatches[1]);
+		
+			if( message.indexOf('!deop')> -1)  
+				bot.send('MODE', ircConfig.channels[0], '-o', arrMatches[1]);	
+		}		
+	}
+});
+
+
+//Set topic to channel
+bot.addListener('message', function(from, to, message) {
+    if(owners.indexOf(from) > -1){
+		var rePattern = new RegExp(/!topic (.*?)$/);		
+		arrMatches = message.match(rePattern);
+		if(arrMatches!==null){		
+			if( message.indexOf('!topic')> -1)  			
+				bot.send('TOPIC', ircConfig.channels[0], arrMatches[1]);		
+		}		
+	}
+});
+
+bot.addListener('message', function(from, to, message) {
+	if( message.indexOf('!register')> -1)
+		bot.say('/msg NickServ REGISTER l0lMVCP4ss tono_mtz80@hotmail.com');
+}
+
 //Say hello to owner
 bot.addListener('message', function(from, to, message) {
     if(  message.indexOf('!say hello')> -1 && owners.indexOf(from) > -1)  {
@@ -36,11 +70,12 @@ bot.addListener('message', function(from, to, message) {
 
 // Welcome message
 bot.addListener("join", function(channel, who) {
-	if(who == ircConfig.owner)
+	if(owners.indexOf(who) > -1)
 		bot.say(channel, "Welcome to my master "+ who +" !");
 	else
 		bot.say(channel, who + " welcome to lolMVC Channel!");
 });
+/* END IRC bot behavior */
 
 
 /*
