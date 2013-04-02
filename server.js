@@ -56,13 +56,6 @@ bot.addListener('message', function(from, to, message) {
 	}
 });
 
-bot.addListener('message', function(from, to, message) {
-	if( message.indexOf('!verify')> -1){
-		bot.say(ircConfig.channels[0],'verifying...');
-		bot.say('NickServ','identify ant0ni0123.');
-		}
-});
-
 //Say hello to owner
 bot.addListener('message', function(from, to, message) {
     if(  message.indexOf('!say hello')> -1 && owners.indexOf(from) > -1)  {
