@@ -65,7 +65,7 @@ Of course this is just a simple bot. The purpose is to give you an idea how to i
 
 Jose Antonio Martinez
 	
-- http://www.jantoniomartinez.org
+- http://www.jantoniomartinez.com
 - http://twitter.com/antoniomtz
 
 ##License
