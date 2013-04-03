@@ -56,6 +56,10 @@ Set a new topic to the channel (Bot must be op)
 	!topic <new Topic>
 	
 Of course this is just a simple bot. The purpose is to give you an idea how to implement and improve it.
+
+### Source
+
+- https://www.openshift.com/blogs/building-social-irc-bots-with-nodejs-part-1
 	
 ##Contact
 
