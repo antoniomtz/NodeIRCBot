@@ -18,32 +18,41 @@ the irc module
 Modify the variables. 
 
 	var ircConfig = {
-	channels: ["#lolmvc"],
+	channels: ["#yourchannel"],
 	server: "irc.freenode.net",
-	botName: "lolmvcbot",	
+	botName: "BotNickHere",	
 	};
+	
+###Pushing changes to openshift
+
+	$ git add *
+	$ git commit -am 'First changes'
+	$ git push 
 	
 ##Commands
 
 After pushing your changes, your bot will be online in a couple minutes.
 
 ### Authentication
-The first thing you need to do is to authenticate with the bot as a owner. Just type 'lolpass' to your bot as a private message.
+The first thing you need to do is to authenticate with the bot as the owner. Just type 'lolpass' to your bot as a private message.
 
 ### Welcome messages
 The bot will say a welcome message to new users joining the channel.
 
 ### Greeting
 Simple greeting
+
 	!say hello	
 
 ### Op & Deop
 Op and Deop uses. (Bot must have op)
+
 	!op <nick>
 	!deop <nick>
 
 ### Topic
 Set a new topic to the channel (Bot must be op)
+
 	!topic <new Topic>
 	
 Of course this is just a simple bot. The purpose is to give you an idea how to implement and improve it.
