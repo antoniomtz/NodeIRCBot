@@ -45,7 +45,7 @@ Simple greeting
 	!say hello	
 
 ### Op & Deop
-Op and Deop uses. (Bot must have op)
+Op and Deop usage. (Bot must have op)
 
 	!op <nick>
 	!deop <nick>
