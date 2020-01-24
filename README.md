@@ -3,7 +3,7 @@
 
 Node.js IRC BOT ready to work with openshift.
 
-##Setting up Openshift.com
+## Setting up Openshift.com
 
 Go to your application panel and create a Node.js app. Then clone your app to your local and install
 the irc module
@@ -11,7 +11,7 @@ the irc module
 	$ npm install irc -S
 
 
-##Configuration
+## Configuration
 
 ### Modify the server.js file
 
@@ -23,13 +23,13 @@ Modify the variables.
 	botName: "BotNickHere",	
 	};
 	
-###Pushing changes to openshift
+### Pushing changes to openshift
 
 	$ git add *
 	$ git commit -am 'First changes'
 	$ git push 
 	
-##Commands
+## Commands
 
 After pushing your changes, your bot will be online in a couple minutes.
 
